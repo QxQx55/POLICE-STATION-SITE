@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cases | Adama Police Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Station</div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('complaint') }}">Report Incident</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="dashboard-panel">
+            <h1>Your Cases</h1>
+            <a href="{{ url_for('create_case') }}" class="btn btn-primary">Create New Case</a>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% if cases %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Case ID</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Date Created</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for case in cases %}
+                    <tr>
+                        <td>{{ case.case_id }}</td>
+                        <td>{{ case.case_type }}</td>
+                        <td>{{ case.status }}</td>
+                        <td>{{ case.date_created.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ case.description }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No cases assigned.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Digital service</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

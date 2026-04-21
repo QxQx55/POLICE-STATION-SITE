@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Adama Police Station</title>
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Station</div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('complaint') }}">Report Incident</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="form-panel">
+            <div class="form-image">
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Login" class="panel-image">
+            </div>
+            <h1>Login</h1>
+            <p>Access the portal as a citizen or officer.</p>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <form id="login-form" method="POST">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Enter your email" required />
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter your password" required />
+
+                <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+            <p class="hint">Not registered yet? <a href="{{ url_for('register') }}">Create account</a>.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Frontend demo</p>
+        </div>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>

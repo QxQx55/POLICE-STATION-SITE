@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Adama Police Station</title>
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Station</div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('complaint') }}">Report Incident</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="dashboard-panel" id="dashboard-area">
+            <div class="dashboard-welcome">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dashboard" class="dashboard-image">
+                <h1>Welcome, {{ user.username }}!</h1>
+                <p>Your role: {{ user.role.name }}</p>
+                {% if user.role.name in ['Police Officer', 'Investigator/Detective', 'Admin'] %}
+                <a href="{{ url_for('cases') }}" class="btn btn-primary">Manage Cases</a>
+                <a href="{{ url_for('criminals') }}" class="btn btn-outline">Criminal Records</a>
+                {% endif %}
+                <h2>Your Complaints</h2>
+                {% if complaints %}
+                <ul>
+                {% for complaint in complaints %}
+                    <li>{{ complaint.complaint_id }} - {{ complaint.description }} - Status: {{ complaint.status }}</li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                <p>No complaints yet.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Frontend demo</p>
+        </div>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>

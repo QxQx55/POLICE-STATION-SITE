@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Adama Police Commission</title>
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Commission</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Get Service</a>
+                <a href="index.html#safety">Stay Safe</a>
+                <a href="index.html#news">News</a>
+                <a href="index.html#community">Community</a>
+                <a href="index.html#contact">Contact Us</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="service-panel">
+            <div class="service-header">
+                <h1>Citizen Help Desk</h1>
+                <p>Connect with Adama police services, file inquiries, or request assistance.</p>
+            </div>
+            <div class="service-actions">
+                <a class="btn btn-primary" href="{{ url_for('login') }}">Login to continue</a>
+                <a class="btn btn-outline" href="https://www.police.gov.et/" target="_blank" rel="noreferrer">Visit official police site</a>
+            </div>
+            <div class="service-details">
+                <h2>Contact details</h2>
+                <p>Use the help desk to get phone numbers, office addresses, and support for crime reports.</p>
+                <ul>
+                    <li>Police Station: Adama Central Station</li>
+                    <li>Phone: +251-11-xxxxxxx</li>
+                    <li>Email: info@adama-police.gov.et</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Digital service prototype</p>
+        </div>
+    </footer>
+</body>
+</html>

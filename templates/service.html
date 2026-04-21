@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Police Service | Adama Police Commission</title>
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Commission</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Get Service</a>
+                <a href="index.html#safety">Stay Safe</a>
+                <a href="index.html#news">News</a>
+                <a href="index.html#community">Community</a>
+                <a href="index.html#contact">Contact Us</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="service-panel">
+            <div class="service-header">
+                <h1 id="service-title">Police Service</h1>
+                <p id="service-description">Loading service details...</p>
+            </div>
+            <div class="service-actions">
+                <a id="service-action" class="btn btn-primary" href="#">Go to service</a>
+                <a id="service-external" class="btn btn-outline" href="#" target="_blank" rel="noreferrer">Open official page</a>
+            </div>
+            <div class="service-details">
+                <h2>What this service does</h2>
+                <p id="service-details">Select a service from the police portal to see more information.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Digital service prototype</p>
+        </div>
+    </footer>
+    <script src="static/service.js"></script>
+</body>
+</html>

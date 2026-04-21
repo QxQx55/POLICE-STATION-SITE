@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criminal Records | Adama Police Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Station</div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('complaint') }}">Report Incident</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="dashboard-panel">
+            <h1>Criminal Records</h1>
+            <a href="{{ url_for('add_criminal') }}" class="btn btn-primary">Add New Criminal Record</a>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% if criminals %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Criminal History</th>
+                        <th>Fingerprint ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for criminal in criminals %}
+                    <tr>
+                        <td>{{ criminal.name }}</td>
+                        <td>{{ criminal.age }}</td>
+                        <td>{{ criminal.address }}</td>
+                        <td>{{ criminal.criminal_history }}</td>
+                        <td>{{ criminal.fingerprint_id }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No criminal records found.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Digital service</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

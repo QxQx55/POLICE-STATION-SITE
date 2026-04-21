@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adama Police Station</title>
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Commission</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="#services">Get Service</a>
+                <a href="#safety">Stay Safe</a>
+                <a href="#news">News</a>
+                <a href="#community">Community</a>
+                <a href="#contact">Contact Us</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-copy">
+                <span class="hero-pill">Adama Police Service Portal</span>
+                <h1>Adama Police Commission: trusted service for public safety in Oromia.</h1>
+                <p>Access police reports, complaints, permits, station information, and community services in one digital portal.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="{{ url_for('complaint') }}">Report Incident</a>
+                    <a class="btn btn-outline" href="{{ url_for('login') }}">Login / Dashboard</a>
+                </div>
+                <div class="hero-search">
+                    <input type="search" placeholder="Search police services, reports, station locations..." aria-label="Search services">
+                    <button class="btn btn-secondary">Search</button>
+                </div>
+                <div class="hero-alert">
+                    <strong>Emergency?</strong> Call 911 or your local station immediately.
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Police station building" class="hero-image">
+                <div class="card">
+                    <h2>Police Services</h2>
+                    <p>Reports, permits, traffic support, victim assistance, and station finder.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-menu container" id="services">
+            <div class="service-column">
+                <h3>Get Service</h3>
+                <ul>
+                    <li><a class="service-button" data-service="Police Reports" href="service.html?topic=Police+Reports">Police Reports</a></li>
+                    <li><a class="service-button" data-service="Traffic Violation Report" href="service.html?topic=Traffic+Violation+Report">Traffic Violation Report</a></li>
+                    <li><a class="service-button" data-service="Public Records Request" href="service.html?topic=Public+Records+Request">Public Records Request</a></li>
+                </ul>
+            </div>
+            <div class="service-column">
+                <h3>Stay Safe</h3>
+                <ul>
+                    <li><a class="service-button" data-service="Safety Advice" href="service.html?topic=Safety+Advice">Safety Advice</a></li>
+                    <li><a class="service-button" data-service="Community Policing" href="service.html?topic=Community+Policing">Community Policing</a></li>
+                    <li><a class="service-button" data-service="Emergency Numbers" href="service.html?topic=Emergency+Numbers">Emergency Numbers</a></li>
+                </ul>
+            </div>
+            <div class="service-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a class="service-button" data-service="Victim Support" href="service.html?topic=Victim+Support">Victim Support</a></li>
+                    <li><a class="service-button" data-service="Lost & Found" href="service.html?topic=Lost+%26+Found">Lost & Found</a></li>
+                    <li><a class="service-button" data-service="Public Meetings" href="service.html?topic=Public+Meetings">Public Meetings</a></li>
+                </ul>
+            </div>
+            <div class="service-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a class="service-button" data-service="Find Your Station" href="service.html?topic=Find+Your+Station">Find Your Station</a></li>
+                    <li><a class="service-button" data-service="Citizen Help Desk" href="service.html?topic=Citizen+Help+Desk">Citizen Help Desk</a></li>
+                    <li><a class="service-button" data-service="Police Commission Contacts" href="service.html?topic=Police+Commission+Contacts">Police Commission Contacts</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="features container police-features" id="safety">
+            <article>
+                <h2>Citizen Services</h2>
+                <p>Register, file complaints, and track case progress from any device.</p>
+            </article>
+            <article>
+                <h2>Officer Dashboard</h2>
+                <p>Review active reports, update status, and manage all cases in one place.</p>
+            </article>
+            <article>
+                <h2>Secure and Simple</h2>
+                <p>A modern prototype interface built with HTML, CSS, and JavaScript.</p>
+            </article>
+        </section>
+
+        <section class="how-it-works container" id="community">
+            <h2>Community Engagement</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <h3>1. Register</h3>
+                    <p>Create a citizen or officer profile.</p>
+                </div>
+                <div class="step-card">
+                    <h3>2. Submit Complaint</h3>
+                    <p>Use the complaint form to log issues.</p>
+                </div>
+                <div class="step-card">
+                    <h3>3. View Status</h3>
+                    <p>See progress in the dashboard.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section container" id="contact">
+            <div class="service-panel">
+                <div class="service-header">
+                    <h1>Contact Adama Police</h1>
+                    <p>Access station details, helplines, and support resources for public inquiries.</p>
+                </div>
+                <div class="service-actions">
+                    <a class="btn btn-primary" href="{{ url_for('contact') }}">Contact page</a>
+                    <a class="btn btn-outline" href="https://www.police.gov.et/" target="_blank" rel="noreferrer">Official Police Portal</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Digital service prototype</p>
+        </div>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>

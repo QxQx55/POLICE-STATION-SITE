@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Adama Police Station</title>
+    <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">Adama Police Station</div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('complaint') }}">Report Incident</a>
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Account</button>
+                    <div class="dropdown-menu">
+                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="form-panel">
+            <div class="form-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Registration" class="panel-image">
+            </div>
+            <h1>Create your account</h1>
+            <p>Register as a citizen or officer to access the digital portal.</p>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <form id="register-form" method="POST">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" placeholder="Enter your username" required />
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Enter your email" required />
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Choose a password" required />
+
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                    <option value="Admin">Admin</option>
+                    <option value="Police Officer">Police Officer</option>
+                    <option value="Investigator/Detective">Investigator/Detective</option>
+                    <option value="Reception/Front Desk">Reception/Front Desk</option>
+                    <option value="Forensic Staff">Forensic Staff</option>
+                </select>
+
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+            <p class="hint">Already registered? <a href="{{ url_for('login') }}">Login here</a>.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Adama Police Station - Frontend demo</p>
+        </div>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>
